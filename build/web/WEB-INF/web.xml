@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <servlet>
+        <servlet-name>action</servlet-name>
+        <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+        <init-param>
+            <param-name>config</param-name>
+            <param-value>/WEB-INF/struts-config.xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>debug</param-name>
+            <param-value>2</param-value>
+        </init-param>
+        <init-param>
+            <param-name>detail</param-name>
+            <param-value>2</param-value>
+        </init-param>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>UserType</servlet-name>
+        <servlet-class>Controller.UserType</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserType</servlet-name>
+        <url-pattern>/UserType.do</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    <security-constraint>
+        <display-name>SecurityConstraint1</display-name>
+        <web-resource-collection>
+            <web-resource-name>Student Resources</web-resource-name>
+            <description>Use a Student Account to access these.</description>
+            <url-pattern>/Student/*</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>Faculty Resources</web-resource-name>
+            <description>Use a Faculty Account to access these.</description>
+            <url-pattern>/Faculty/*</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>Admin Resources</web-resource-name>
+            <description>Use a Admin Account to access these.</description>
+            <url-pattern>/Admin/*</url-pattern>
+        </web-resource-collection>
+    </security-constraint>
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>Secure Form Authentication</realm-name>
+        <form-login-config>
+            <form-login-page>/Common/Login.jsp</form-login-page>
+            <form-error-page>/Common/LoginError.jsp</form-error-page>
+        </form-login-config>
+    </login-config>
+    <security-role>
+        <description>Has full access to the site.</description>
+        <role-name>Administrator</role-name>
+    </security-role>
+    <security-role>
+        <description>Has access to the queries posted by the user and can view course material.</description>
+        <role-name>Faculty</role-name>
+    </security-role>
+    <security-role>
+        <description>Can post queries, send feedback, view course details and material.</description>
+        <role-name>Student</role-name>
+    </security-role>
+</web-app>
