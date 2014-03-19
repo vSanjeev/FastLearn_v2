@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" 
+   prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,5 +15,7 @@
     </head>
     <body>
         <h1>Please enter a valid username or password</h1>
+        <c:url var="url" value="Login.jsp"/>
+   <p><a href="${url}">Try again.</a></p>
     </body>
 </html>

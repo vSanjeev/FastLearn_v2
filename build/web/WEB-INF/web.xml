@@ -18,12 +18,39 @@
         <load-on-startup>2</load-on-startup>
     </servlet>
     <servlet>
-        <servlet-name>UserType</servlet-name>
-        <servlet-class>Controller.UserType</servlet-class>
+        <servlet-name>StudentHome</servlet-name>
+        <servlet-class>view.StudentHome</servlet-class>
+        <run-as>
+            <role-name>Student</role-name>
+        </run-as>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginSuccess</servlet-name>
+        <servlet-class>view.LoginSuccess</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewServlet</servlet-name>
+        <servlet-class>Student.NewServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Index</servlet-name>
+        <servlet-class>view.Index</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>UserType</servlet-name>
-        <url-pattern>/UserType.do</url-pattern>
+        <servlet-name>StudentHome</servlet-name>
+        <url-pattern>/StudentHome.view</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginSuccess</servlet-name>
+        <url-pattern>/LoginSuccess</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewServlet</servlet-name>
+        <url-pattern>/NewServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Index</servlet-name>
+        <url-pattern>/Index.view</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -31,12 +58,12 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>Index.view</welcome-file>
     </welcome-file-list>
     <security-constraint>
         <display-name>SecurityConstraint1</display-name>
         <web-resource-collection>
-            <web-resource-name>Student Resources</web-resource-name>
+            <web-resource-name>Student</web-resource-name>
             <description>Use a Student Account to access these.</description>
             <url-pattern>/Student/*</url-pattern>
         </web-resource-collection>
@@ -50,6 +77,12 @@
             <description>Use a Admin Account to access these.</description>
             <url-pattern>/Admin/*</url-pattern>
         </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>Student</role-name>
+            <role-name>Administrator</role-name>
+            <role-name>Faculty</role-name>
+        </auth-constraint>
     </security-constraint>
     <login-config>
         <auth-method>FORM</auth-method>

@@ -14,11 +14,11 @@
     <body>
         <h1>Enter Login Details</h1>
         <div>
-            <form action="../UserType.do" method="POST">
+            <form action="j_security_check"  method="POST">
                 <label>User Name</label>
-                <input type="text" name="username" value=""/><br>
+                <input type="text" name="j_username" value=""/><br>
                 <label>Password</label>
-                <input type="password" name="password" value=""/><br>
+                <input type="password" name="j_password" value=""/><br>
                 <input type="submit" value="Log In"/>
             </form>
         </div>
